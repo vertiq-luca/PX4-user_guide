@@ -336,6 +336,21 @@ Therefore,
   For more information see [DDS Topics YAML](#dds-topics-yaml) below.
   :::
 
+## Supported uORB Services
+
+::: note
+This feature is still experimental.
+:::
+
+Even if PX4 does not fully support uORB services yet, service-like features are implemented using specific request and response topics, such as [message_format_request](https://github.com/PX4/PX4-Autopilot/blob/main/msg/MessageFormatRequest.msg), [message_format_response](https://github.com/PX4/PX4-Autopilot/blob/main/msg/MessageFormatResponse.msg), [vehicle_command](https://github.com/PX4/PX4-Autopilot/blob/main/msg/VehicleCommand.msg) and [vehicle_command_ack](https://github.com/PX4/PX4-Autopilot/blob/main/msg/VehicleCommandAck.msg).
+
+The PX4 [uxrce_dds_client](../modules/modules_system.md#uxrce-dds-client) uses eProsima Micro XRCE-DDS [requester and replier](https://micro-xrce-dds.docs.eprosima.com/en/latest/getting_started.html#requester-replier) to expose these features as proper DDS services that can be later called by ROS2 applications.
+
+The currently available services are stored in the PX4 [srv/](https://github.com/PX4/PX4-Autopilot/tree/main/srv) folder and they are:
+
+- [`vehicle_command`](https://github.com/PX4/PX4-Autopilot/blob/main/srv/VehicleCommand.srv).
+This service can be used to replace the pair of [vehicle_command](https://github.com/PX4/PX4-Autopilot/blob/main/msg/VehicleCommand.msg) and [vehicle_command_ack](https://github.com/PX4/PX4-Autopilot/blob/main/msg/VehicleCommandAck.msg) topics.
+
 ## Customizing the Topic Namespace
 
 Custom topic namespaces can be applied at build time (changing [dds_topics.yaml](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/uxrce_dds_client/dds_topics.yaml)) or at runtime (which is useful for multi vehicle operations):
