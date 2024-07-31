@@ -93,7 +93,14 @@ The related parameters for the tuning of the PID rate controllers are:
 
 The rate controller can be tuned in [Acro mode](../flight_modes_mc/acro.md) or [Manual/Stabilized mode](../flight_modes_mc/manual_stabilized.md):
 
-- _Acro mode_ is the best way because it allows for isolated rate control testing, but it is significantly harder to pilot. If you choose this mode, make sure to [disable all stick expo and have reasonable maximum rates for all axes](../flight_modes_mc/acro.md#stick-input-mapping). From PX4 1.15 on the defaults are set for this purpose to a maximum rate of 100°/s linear mapping for all axes.
+- _Acro mode_ is preferred because it allows for isolated rate control testing.
+  However it is significantly harder to pilot.
+
+  ::: warning
+  If you choose this mode, you must [disable all stick expo and have reasonable maximum rates for all axes](../flight_modes_mc/acro.md#stick-input-mapping).
+  For PX4 v1.15 and later the defaults are set for this purpose to a maximum rate of 100°/s linear mapping for all axes.
+  :::
+
 - _Manual/Stabilized mode_ is simpler to fly, but it is also much more difficult to distinguish if attitude or rate controller causes a certain behavior.
 
 If the vehicle does not fly at all:
